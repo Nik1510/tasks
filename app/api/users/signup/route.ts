@@ -16,8 +16,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Please enter all the fields" });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ 
+      $or:[{email},{username}],
+    });;
     if (user) {
+      if(user.username===username){
+        return NextResponse.json({
+          message:"Username already exists",
+        },{
+          status:500
+        })
+      }
       return NextResponse.json({ message: "Email already exists" }, { status: 400 });
     }
 
