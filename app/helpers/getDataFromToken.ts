@@ -13,6 +13,6 @@ export const getDataFromToken = (request: NextRequest): string => {
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET!) as DecodedToken;
     return decoded.id;
   } catch (error: any) {
-    throw new Error(error.message || "Invalid token");
+    console.error(error.message || "Invalid token");
   }
 };
