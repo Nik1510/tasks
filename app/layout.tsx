@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         {children}
         
-        {/* ✅ Add toaster globally below */}
+        {/*  Add toaster globally below */}
         <Toaster
           position="top-right"
           toastOptions={{
