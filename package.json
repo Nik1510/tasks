@@ -12,6 +12,7 @@
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.2",
     "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.553.0",
     "mongodb": "^6.20.0",
     "mongoose": "^8.19.2",
     "next": "16.0.1",
