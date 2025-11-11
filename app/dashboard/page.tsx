@@ -147,17 +147,7 @@ export default function Dashboard() {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-xl border border-base-300"
             >
-              <li>
-                <a className="hover:bg-primary hover:text-primary-content transition-colors">
-                  Profile
-                </a>
-              </li>
-              <li>
-                <a className="hover:bg-primary hover:text-primary-content transition-colors">
-                  Settings
-                </a>
-              </li>
-              <div className="divider my-0"></div>
+              <div className=""></div>
               <li>
                 <button
                   onClick={handleLogout}
@@ -190,29 +180,44 @@ export default function Dashboard() {
               />
 
               <div className="dropdown dropdown-end">
-                <label
-                  tabIndex={0}
-                  className="btn btn-outline btn-primary min-w-[140px]"
-                >
-                  {priority}
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-40 p-2 shadow-lg border border-base-300"
-                >
-                  {["High", "Medium", "Low"].map((p) => (
-                    <li key={p}>
-                      <a
-                        onClick={() => setPriority(p)}
-                        className="hover:bg-primary hover:text-primary-content transition-colors"
-                      >
-                        <span className={`badge ${getPriorityColor(p)} badge-sm`}></span>
-                        {p}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+  <label
+    tabIndex={0}
+    className={`btn min-w-[160px] text-white font-medium shadow-md hover:shadow-lg transition-all duration-300 border-none ${
+      priority === "High"
+        ? "bg-gradient-to-r from-red-500 to-rose-600 hover:from-rose-600 hover:to-red-500"
+        : priority === "Medium"
+        ? "bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-400"
+        : priority === "Low"
+        ? "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-emerald-600 hover:to-green-500"
+        : "btn-outline btn-primary text-primary hover:bg-primary hover:text-white"
+    }`}
+  >
+    {priority}
+  </label>
+
+  <ul
+    tabIndex={0}
+    className="dropdown-content menu bg-base-100 rounded-box z-10 w-44 p-2 shadow-lg border border-base-300"
+  >
+    {["High", "Medium", "Low"].map((p) => (
+      <li key={p}>
+        <a
+          onClick={() => setPriority(p)}
+          className={`transition-all duration-200 font-medium ${
+            p === "High"
+              ? "hover:bg-gradient-to-r from-red-500 to-rose-600 hover:text-white"
+              : p === "Medium"
+              ? "hover:bg-gradient-to-r from-yellow-400 to-amber-500 hover:text-white"
+              : "hover:bg-gradient-to-r from-green-500 to-emerald-600 hover:text-white"
+          }`}
+        >
+          {p}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
 
               <button
                 onClick={handleAddTask}
